@@ -1,7 +1,7 @@
 <!-- begin clients.vtl -->
 <div class="row">
-<ul>
-  <link href="/table.css" rel="stylesheet">
+  <ul>
+    <link href="/table.css" rel="stylesheet">
     <div class="container tableContainer">
       <div class="row clearfix">
         <table class="tasks" cellspacing="0">
@@ -24,7 +24,9 @@
               <td> <!--TODO: make this a drop down? -->
                 $client.getAssignedStylistName()
               </td>
-              <td>big ol delete button</td>
+              <td><form action="/clients/$client.getClientId()/delete" method="post">
+                <button type="submit" class="btn btn-danger">Delete client</button>
+              </form></td>
             </tr>
             #end
             <form action="/clients" method="post">
@@ -36,13 +38,13 @@
                 <option value="$stylist.getStylistId()">$stylist.getStylistName()</option>
                 #end
               </select>
-              </td>
-              <td><button type="submit" class="btn btn-success">Add client</button></td>
+            </td>
+            <td><button type="submit" class="btn btn-success">Add client</button></td>
           </tbody>
         </table>
       </div>
     </div>
-</ul>
+  </ul>
 </div>
 
 <!-- end clients.vtl -->
