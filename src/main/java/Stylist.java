@@ -49,10 +49,10 @@ public class Stylist {
   public static Stylist findStylist(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM stylists WHERE id = :id";
-      Stylist patient = con.createQuery(sql)
+      Stylist stylist = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Stylist.class);
-      return patient;
+      return stylist;
     }
   }
 

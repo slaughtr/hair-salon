@@ -70,13 +70,13 @@ public class Client {
   public static Client findClient(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE id = :id";
-      Client patient = con.createQuery(sql)
+      Client client = con.createQuery(sql)
       .addColumnMapping("appointment_date", "appointmentDate")
       .addColumnMapping("appointment_time", "appointmentTime")
       .addColumnMapping("stylist_id", "stylistId")
       .addParameter("id", id)
       .executeAndFetchFirst(Client.class);
-      return patient;
+      return client;
     }
   }
 

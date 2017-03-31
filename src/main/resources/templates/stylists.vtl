@@ -1,60 +1,23 @@
 <!-- begin stylists.vtl -->
-
-<ul>
-  #foreach ($stylist in $stylists)
-  <li>$stylist.getStylistName() - $stylist.getStylistSpecialty()</li>
-  #end
-</ul>
-<link href="styles/helpers.css" rel="stylesheet">
-<link href="styles/global.css" rel="stylesheet">
-<link href="styles/tasks.css" rel="stylesheet">
-<body>
+<link href="/table.css" rel="stylesheet">
   <div class="container tableContainer">
     <div class="row clearfix">
       <table class="tasks" cellspacing="0">
         <thead>
           <tr>
-            <th>Task Details</th>
-            <th>Progress</th>
-            <th>Vital Task</th>
+            <th>Name</th>
+            <th>Specialty</th>
+            <th>Fire</th>
           </tr>
         </thead>
         <tbody>
+          #foreach ($stylist in $stylists)
           <tr>
-            <td>Create pretty table design</td>
-            <td>100%</td>
-            <td>Yes</td>
+            <td>$stylist.getStylistName()</td>
+            <td>$stylist.getStylistSpecialty()</td>
+            <td>big ol delete button</td>
           </tr>
-          <tr>
-            <td>Take the dog for a walk</td>
-            <td>100%</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>Waste half the day on Twitter</td>
-            <td>20%</td>
-            <td>No</td>
-          </tr>
-          <tr>
-            <td>Feel inferior after viewing Dribble</td>
-            <td>80%</td>
-            <td>No</td>
-          </tr>
-          <tr>
-            <td>Wince at "to do" list</td>
-            <td>100%</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>Vow to complete personal project</td>
-            <td>23%</td>
-            <td>yes</td>
-          </tr>
-          <tr>
-            <td>Procrastinate</td>
-            <td>80%</td>
-            <td>No</td>
-          </tr>
+          #end
         </tbody>
       </table>
     </div>

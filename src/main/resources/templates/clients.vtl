@@ -1,9 +1,42 @@
 <!-- begin clients.vtl -->
 <div class="row">
 <ul>
-  #foreach ($client in $clients)
-  <li>$client.getClientName() - $client.getClientAppointmentDate() @ $client.getClientAppointmentTime()</li>
-  #end
+  <link href="/table.css" rel="stylesheet">
+    <div class="container tableContainer">
+      <div class="row clearfix">
+        <table class="tasks" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Appointment date</th>
+              <th>Appointment time</th>
+              <th>Stylist selected</th>
+              <th>Remove client</th>
+            </tr>
+          </thead>
+          <tbody>
+            #foreach ($client in $clients)
+            <tr>
+              <td>$client.getClientName()</td>
+              <td>$client.getClientAppointmentDate()</td>
+              <td>$client.getClientAppointmentTime()</td>
+              <!-- <td>$stylists.findStylist($client.getAssignedStylistId())</td> -->
+              <td> <!--TODO: make this a drop down? -->
+                #foreach ($stylist in $stylists)
+                  #if ($stylist.getStylistId() == $client.getAssignedStylistId())
+                  $stylist.getStylistName()
+                  #else
+                  No stylist assigned!
+                  #end
+                #end
+              </td>
+              <td>big ol delete button</td>
+            </tr>
+            #end
+          </tbody>
+        </table>
+      </div>
+    </div>
 </ul>
 </div>
 
