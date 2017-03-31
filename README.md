@@ -8,16 +8,16 @@
 _Example text for the description of the project_
 
 
-## Specifications
-
-| Behavior                   | Input Example     | Output Example    |
-| -------------------------- | -----------------:| -----------------:|
-
 
 
 ## Setup/Installation Requirements
 
 * _Clone the repository_
+* _DB setup: in terminal, run 'psql'
+then, 'CREATE DATABASE hair_salon;'
+then, '\c hair_salon;'
+then, 'CREATE TABLE clients (id serial PRIMARY KEY, name varchar, appointment_date date, appointment_time time, stylist_id int)'
+then, 'CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, specialty varchar)'
 * _Run the command 'gradle run'_
 * _Open browser and go to localhost:4567_
 
