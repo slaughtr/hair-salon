@@ -42,7 +42,17 @@ public class Client {
     return stylist.getStylistName();
   }
 
-
+  public void deleteClientFromDatabase() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id = :id;";
+      con.createQuery(sql)
+      .addColumnMapping("appointment_date", "appointmentDate")
+      .addColumnMapping("appointment_time", "appointmentTime")
+      .addColumnMapping("stylist_id", "stylistId")
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
 
 
   public static List<Client> allClients() {

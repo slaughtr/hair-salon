@@ -77,7 +77,14 @@ public void find_returnsClientWithSameId_secondClient() {
     assertTrue(testClient.getAssignedStylistId() == testStylist.getStylistId());
   }
 
-
+  @Test
+  public void delete_deletesClientFromDatabase_true() {
+    Client testClient = new Client("Person", "1999-01-01", "5:00", 1);
+    testClient.save();
+    int testClientId = testClient.getClientId();
+    testClient.deleteClientFromDatabase();
+    assertEquals(null, Client.findClient(testClientId));
+  }
 
 
 }
