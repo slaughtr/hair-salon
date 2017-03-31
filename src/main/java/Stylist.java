@@ -56,6 +56,17 @@ public class Stylist {
     }
   }
 
+//probably unnecessary
+  public static Stylist findStylistByName(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM stylists WHERE name = :name";
+      Stylist stylist = con.createQuery(sql)
+      .addParameter("name", name)
+      .executeAndFetchFirst(Stylist.class);
+      return stylist;
+    }
+  }
+
 
   @Override
   public boolean equals(Object otherStylist){

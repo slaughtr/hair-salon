@@ -55,7 +55,9 @@ public class App {
       String name = request.queryParams("name");
       String appointmentDate = request.queryParams("appointmentDate");
       String appointmentTime = request.queryParams("appointmentTime");
-
+      int selectedStylist = Integer.parseInt(request.queryParams("stylistName"));
+      Client newClient = new Client(name, appointmentDate, appointmentTime, selectedStylist);
+      newClient.save();
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
