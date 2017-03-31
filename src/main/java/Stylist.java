@@ -27,6 +27,26 @@ public class Stylist {
     return id;
   }
 
+  public void updateStylistName(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET name = :newName WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("newName", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void updateStylistSpecialty(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET specialty = :newSpecialty WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("newSpecialty", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
   public List<Client> getAllStylistClients() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE stylist_id = :id";

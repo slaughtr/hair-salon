@@ -29,7 +29,7 @@ public class Client {
     String[] timeAsArray = appointmentTime.split("");
     String timeNotArray = "";
     String letsRemoveThatZero;
-    //this is all pretty unnecessary but hilarious
+    //this is all pretty unnecessary but hilarious. could just use a helper method
     if(timeAsArray.length > 5) {
       for(String digit : timeAsArray) {
         if(timeNotArray.length() < 5) {

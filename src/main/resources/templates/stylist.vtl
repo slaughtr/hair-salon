@@ -4,6 +4,12 @@
   <h3>Current number of clients: $clients.size()</h3>
   <br><br>
   <h2>Specialty: $stylist.getStylistSpecialty()</h2>
+  <form action="/stylists/$stylist.getStylistId()/update" method="post">
+    <label for="name">Stylist name:</label>
+    <input type="text" name="name" value="$stylist.getStylistName()" required>
+    <label for="specialty">Stylist's specialty:</label>
+    <input type="text" name="specialty" value="$stylist.getStylistSpecialty()" required>
+  </form>
 
 <h3>Currently assigned clients:</h3>
 <link href="/table.css" rel="stylesheet">
