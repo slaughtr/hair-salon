@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
     height: 100%;
 }
 body {
@@ -10,7 +10,7 @@ body {
     -webkit-background-blend-mode: overlay;
     -moz-background-blend-mode: overlay;
     background-blend-mode: overlay;
-}
+}*/
 
 #navbar {
     position: absolute;

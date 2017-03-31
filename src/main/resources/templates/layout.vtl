@@ -10,16 +10,22 @@
     <script src="/js/navbar.js"></script>
   </head>
   <body>
-    <ul id="navbar">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="/stylists">Stylists</a></li>
-      <li><a href="/clinets">Clients</a></li>
-      <li><a href="/calendar">Appointment Calendar</a></li>
-    </ul>
     <!-- begin inner template-->
     <div class="container">
-      #parse( $template )
+      <div class="row">
+        <ul id="navbar"> <!--navbar here, get your navbar! -->
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="/stylists">Stylists</a></li>
+          <li><a href="/clients">Clients</a></li>
+          <li><a href="/calendar">Appointment Calendar</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="container insideContainer">
+      <div class="row">
+        #parse( $template )
+      </div>
+      </div>
     <!-- end inner template-->
   </body>
 </html>
