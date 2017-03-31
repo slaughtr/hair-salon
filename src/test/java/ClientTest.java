@@ -95,5 +95,29 @@ public void find_returnsClientWithSameId_secondClient() {
     //thanks to Janek for the findClient method help. It's not mentioned anywhere, but the test here doesn't work if you just use testClient.getAssignedStylistId() because the object isn't properly reflecting the database entries that quickly or something. There's not even an example test for updating on learnhowtoprogram!
   }
 
+  @Test
+  public void updateName_updatesClientNameCorrectly_true() {
+    Client testClient = new Client("Person", "1999-01-01", "5:00", 1);
+    testClient.save();
+    testClient.updateClientName("Not a Person");
+    assertEquals("Not a Person", Client.findClient(testClient.getClientId()).getClientName());
+  }
+
+  @Test
+  public void updateDate_updatesClientAppointmentDateCorrectly_true() {
+    Client testClient = new Client("Person", "1999-01-01", "5:00", 1);
+    testClient.save();
+    testClient.updateClientAppointmentDate("2000-01-01");
+    assertEquals("2000-01-01", Client.findClient(testClient.getClientId()).getClientAppointmentDate());
+  }
+
+  @Test
+  public void updateTime_updatesClientAppointmentTimeCorrectly_true() {
+    Client testClient = new Client("Person", "1999-01-01", "5:00", 1);
+    testClient.save();
+    testClient.updateClientAppointmentTime("4:00");
+    assertEquals("4:00", Client.findClient(testClient.getClientId()).getClientAppointmentTime());
+  }
+
 
 }

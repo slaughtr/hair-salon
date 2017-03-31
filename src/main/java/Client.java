@@ -26,6 +26,23 @@ public class Client {
   }
 
   public String getClientAppointmentTime() {
+    String[] timeAsArray = appointmentTime.split("");
+    String timeNotArray = "";
+    String letsRemoveThatZero;
+    //this is all pretty unnecessary but hilarious
+    if(timeAsArray.length > 5) {
+      for(String digit : timeAsArray) {
+        if(timeNotArray.length() < 5) {
+          timeNotArray+=digit;
+          appointmentTime = timeNotArray;
+        }
+      }
+    }
+
+    if(appointmentTime.charAt(0) == '0') {
+      letsRemoveThatZero = appointmentTime.substring(1);
+      appointmentTime = letsRemoveThatZero;
+    }
     return appointmentTime;
   }
 
@@ -63,6 +80,45 @@ public class Client {
       .addColumnMapping("stylist_id", "stylistId")
       .addParameter("id", id)
       .addParameter("newStylistId", newStylistId)
+      .executeUpdate();
+    }
+  }
+
+  public void updateClientName(String newName) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+      .addColumnMapping("appointment_date", "appointmentDate")
+      .addColumnMapping("appointment_time", "appointmentTime")
+      .addColumnMapping("stylist_id", "stylistId")
+      .addParameter("id", id)
+      .addParameter("name", newName)
+      .executeUpdate();
+    }
+  }
+
+  public void updateClientAppointmentDate(String newAppointmentDate) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET appointment_date = CAST(:newAppointmentDate AS DATE) WHERE id = :id";
+      con.createQuery(sql)
+      .addColumnMapping("appointment_date", "appointmentDate")
+      .addColumnMapping("appointment_time", "appointmentTime")
+      .addColumnMapping("stylist_id", "stylistId")
+      .addParameter("id", id)
+      .addParameter("newAppointmentDate", newAppointmentDate)
+      .executeUpdate();
+    }
+  }
+
+  public void updateClientAppointmentTime(String newAppointmentTime) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET appointment_time = CAST(:newAppointmentTime AS TIME) WHERE id = :id";
+      con.createQuery(sql)
+      .addColumnMapping("appointment_date", "appointmentDate")
+      .addColumnMapping("appointment_time", "appointmentTime")
+      .addColumnMapping("stylist_id", "stylistId")
+      .addParameter("id", id)
+      .addParameter("newAppointmentTime", newAppointmentTime)
       .executeUpdate();
     }
   }
