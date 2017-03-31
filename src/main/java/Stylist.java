@@ -67,6 +67,14 @@ public class Stylist {
     }
   }
 
+  public void deleteStylistFromDatabase() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
 
   @Override
   public boolean equals(Object otherStylist){

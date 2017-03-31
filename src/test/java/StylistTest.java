@@ -58,5 +58,14 @@ public class StylistTest {
     assertEquals(Stylist.findStylist(testStylist2.getStylistId()), testStylist2);
   }
 
+  @Test
+  public void delete_deletesStylistFromDatabase_true() {
+    Stylist testStylist = new Stylist("Purr Song", "Stereotypical white guy haircuts");
+    testStylist.save();
+    int testStylistId = testStylist.getStylistId();
+    testStylist.deleteStylistFromDatabase();
+    assertEquals(null, Stylist.findStylist(testStylistId));
+  }
+
 
 }
