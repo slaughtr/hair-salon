@@ -36,6 +36,13 @@ public class ClientTest {
     assertTrue(testClient.getClientId() > 0);
   }
 
+  @Test
+  public void client_savesToDatabase_true() {
+    Client testClient = new Client("Person", "1999-01-01");
+    testClient.save();
+    assertTrue(Client.find(testClient.getClientId()).equals(testClient));
+  }
+
 
 
 
