@@ -116,7 +116,7 @@ public void find_returnsClientWithSameId_secondClient() {
     Client testClient = new Client("Person", "1999-01-01", "5:00", 1);
     testClient.save();
     testClient.updateClientAppointmentTime("4:00");
-    assertEquals("4:00", Client.findClient(testClient.getClientId()).getClientAppointmentTime());
+    assertEquals("04:00", Client.findClient(testClient.getClientId()).getClientAppointmentTime());
   }
 
 

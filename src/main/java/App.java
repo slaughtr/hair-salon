@@ -111,6 +111,12 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Client client = Client.findClient(Integer.parseInt(request.params("id")));
       int newStylistId = Integer.parseInt(request.queryParams("stylistId"));
+      String updateTime = request.queryParams("appointmentTime");
+      String updateDate = request.queryParams("appointmentDate");
+      String updateName = request.queryParams("name");
+      client.updateClientAppointmentTime(updateTime);
+      client.updateClientAppointmentDate(updateDate);
+      client.updateClientName(updateName);
       client.updateClientStylist(newStylistId);
       response.redirect(request.headers("Referer"));
       return new ModelAndView(model, layout);

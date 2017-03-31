@@ -38,11 +38,11 @@ public class Client {
         }
       }
     }
-
-    if(appointmentTime.charAt(0) == '0') {
-      letsRemoveThatZero = appointmentTime.substring(1);
-      appointmentTime = letsRemoveThatZero;
-    }
+    // did the below for testing, but now I need that leading 0 for the time type input form to populate correctly, which didn't help and now I'm stuck, but actually it was helping and I just forgot other bits in my routing. jeeeeez
+    // if(appointmentTime.charAt(0) == '0') {
+    //   letsRemoveThatZero = appointmentTime.substring(1);
+    //   appointmentTime = letsRemoveThatZero;
+    // }
     return appointmentTime;
   }
 
@@ -110,7 +110,7 @@ public class Client {
     }
   }
 
-  public void updateClientAppointmentTime(String newAppointmentTime) {
+  public void updateClientAppointmentTime(String newAptTime) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE clients SET appointment_time = CAST(:newAppointmentTime AS TIME) WHERE id = :id";
       con.createQuery(sql)
@@ -118,7 +118,7 @@ public class Client {
       .addColumnMapping("appointment_time", "appointmentTime")
       .addColumnMapping("stylist_id", "stylistId")
       .addParameter("id", id)
-      .addParameter("newAppointmentTime", newAppointmentTime)
+      .addParameter("newAppointmentTime", newAptTime)
       .executeUpdate();
     }
   }
