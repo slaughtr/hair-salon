@@ -47,6 +47,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/clients", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/clients.vtl");
+      model.put("stylists", Stylist.allStylists());
+      model.put("clients", Client.allClients());
+      String name = request.queryParams("name");
+      String appointmentDate = request.queryParams("appointmentDate");
+      String appointmentTime = request.queryParams("appointmentTime");
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/calendar", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/calendar.vtl");
