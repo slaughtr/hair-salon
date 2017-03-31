@@ -70,6 +70,36 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/stylists", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/stylists.vtl");
+      model.put("stylists", Stylist.allStylists());
+      model.put("clients", Client.allClients());
+      String name = request.queryParams("name");
+      String specialty = request.queryParams("specialty");
+      Stylist newStylist = new Stylist(name, specialty);
+      newStylist.save();
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylists/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.findStylist(Integer.parseInt(request.params("id")));
+      stylist.deleteStylistFromDatabase();
+      String url = "/stylists";
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/stylists/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.findStylist(Integer.parseInt(request.params("id")));
+      model.put("stylist", stylist);
+      model.put("clients", stylist.getAllStylistClients());
+      model.put("template", "templates/stylist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/calendar", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/calendar.vtl");

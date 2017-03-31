@@ -1,6 +1,9 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class StylistTest {
 
@@ -65,6 +68,21 @@ public class StylistTest {
     int testStylistId = testStylist.getStylistId();
     testStylist.deleteStylistFromDatabase();
     assertEquals(null, Stylist.findStylist(testStylistId));
+  }
+
+  @Test
+  public void getClients_returnsAllClientsAssignedToStylist_true() {
+    Stylist testStylist = new Stylist("Veni Vedi Vicci", "Mullets");
+    testStylist.save();
+    Client testClient = new Client("Person", "1999-01-01", "5:00", testStylist.getStylistId());
+    testClient.save();
+    Client testClient2 = new Client("Pearson", "1998-01-01", "4:00", testStylist.getStylistId());
+    testClient2.save();
+    Client testClient3 = new Client("Piercing", "1997-01-01", "3:00", testStylist.getStylistId());
+    testClient3.save();
+    Client[] clients = new Client[] {testClient, testClient2, testClient3};
+    assertTrue(testStylist.getAllStylistClients().containsAll(Arrays.asList(clients)));
+
   }
 
 
