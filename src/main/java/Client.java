@@ -54,6 +54,18 @@ public class Client {
     }
   }
 
+  public void updateClientStylist(int newStylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET stylist_id = :newStylistId WHERE id = :id";
+      con.createQuery(sql)
+      .addColumnMapping("appointment_date", "appointmentDate")
+      .addColumnMapping("appointment_time", "appointmentTime")
+      .addColumnMapping("stylist_id", "stylistId")
+      .addParameter("id", id)
+      .addParameter("newStylistId", newStylistId)
+      .executeUpdate();
+    }
+  }
 
   public static List<Client> allClients() {
     try(Connection con = DB.sql2o.open()) {

@@ -102,8 +102,17 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Client client = Client.findClient(Integer.parseInt(request.params("id")));
       model.put("client", client);
-      model.put("stylist", Stylist.findStylist(client.getAssignedStylistId()));
+      model.put("stylists", Stylist.allStylists());
       model.put("template", "templates/client.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/clients/:id/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Client client = Client.findClient(Integer.parseInt(request.params("id")));
+      int newStylistId = Integer.parseInt(request.queryParams("stylistId"));
+      client.updateClientStylist(newStylistId);
+      response.redirect(request.headers("Referer"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

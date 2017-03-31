@@ -1,4 +1,23 @@
 <!-- begin client.vtl -->
 
+<h1>$client.getClientName()</h1>
+<br>
+<h2>Appointment date: $client.getClientAppointmentDate()</h2>
+<h3>       at: $client.getClientAppointmentTime()</h3>
+<br><br>
+<h2>Current assigned stylist: $client.getAssignedStylistName()</h2>
+<br><br>
+<h2>Assign new stylist:</h2>
+  <form action="/clients/$client.getClientId()/update" method="post">
+<td><select name="stylistId" type="text">
+
+  #foreach ($stylist in $stylists)
+  <option value="$stylist.getStylistId()">$stylist.getStylistName()</option>
+  #end
+</select>
+</td>
+<td><button type="submit" class="btn btn-success">Add client</button></td>
+</form>
+
 
 <!-- begin client.vtl -->
