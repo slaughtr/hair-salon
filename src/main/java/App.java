@@ -15,5 +15,27 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/stylists", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/stylists.vtl");
+      model.put("stylists", Stylist.allStylists());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/clients", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/clients.vtl");
+      model.put("clients", Client.allClients());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/calendar", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/calendar.vtl");
+      model.put("clients", Client.allClients());
+      model.put("stylists", Stylist.allStylists());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
