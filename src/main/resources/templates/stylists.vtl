@@ -2,7 +2,61 @@
 
 <ul>
   #foreach ($stylist in $stylists)
-  <li>$stylist.getStylistName()</li>
+  <li>$stylist.getStylistName() - $stylist.getStylistSpecialty()</li>
   #end
 </ul>
-<!-- end stylists.vtl -->
+<link href="styles/helpers.css" rel="stylesheet">
+<link href="styles/global.css" rel="stylesheet">
+<link href="styles/tasks.css" rel="stylesheet">
+<body>
+  <div class="container tableContainer">
+    <div class="row clearfix">
+      <table class="tasks" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Task Details</th>
+            <th>Progress</th>
+            <th>Vital Task</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Create pretty table design</td>
+            <td>100%</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Take the dog for a walk</td>
+            <td>100%</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Waste half the day on Twitter</td>
+            <td>20%</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Feel inferior after viewing Dribble</td>
+            <td>80%</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Wince at "to do" list</td>
+            <td>100%</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Vow to complete personal project</td>
+            <td>23%</td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>Procrastinate</td>
+            <td>80%</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- end stylists.vtl -->
