@@ -17,7 +17,7 @@
           <tbody>
             #foreach ($client in $clients)
             <tr>
-              <td>$client.getClientName()</td>
+              <td><a href="/clients/$client.getClientId()">$client.getClientName()</a></td>
               <td>$client.getClientAppointmentDate()</td>
               <td>$client.getClientAppointmentTime()</td>
               <!-- <td>$stylists.findStylist($client.getAssignedStylistId())</td> -->
@@ -40,6 +40,7 @@
               </select>
             </td>
             <td><button type="submit" class="btn btn-success">Add client</button></td>
+          </form>
           </tbody>
         </table>
       </div>

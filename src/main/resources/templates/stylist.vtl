@@ -1,8 +1,33 @@
 <!-- begin stylist.vtl -->
 
-<div class="container">
-  
+<link href="/table.css" rel="stylesheet">
+<div class="container tableContainer">
+  <div class="row clearfix">
+    <table class="tasks" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Appointment date</th>
+          <th>Appointment time</th>
+          <th>Stylist selected</th>
+          <th>Remove client</th>
+        </tr>
+      </thead>
+      <tbody>
+        #foreach ($client in $clients)
+        <tr>
+          <td><a href="/clients/$client.getClientId()">$client.getClientName()</a></td>
+            <td>$client.getClientAppointmentDate()</td>
+            <td>$client.getClientAppointmentTime()</td>
+            <td>$client.getAssignedStylistName()</td>
+            <td><form action="/clients/$client.getClientId()/delete" method="post">
+              <button type="submit" class="btn btn-danger">Delete client</button>
+            </form></td>
+          </tr>
+          #end
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-</div>
-
-<!-- end stylist.vtl -->
+    <!-- end stylist.vtl -->

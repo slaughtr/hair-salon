@@ -13,7 +13,7 @@
         <tbody>
           #foreach ($stylist in $stylists)
           <tr>
-            <td><a href="/stylists/$stylist.getStylistId()">$stylist.getStylistName()</td>
+            <td><a href="/stylists/$stylist.getStylistId()">$stylist.getStylistName()</a></td>
             <td>$stylist.getStylistSpecialty()</td>
             <td><form action="/stylists/$stylist.getStylistId()/delete" method="post">
               <button type="submit" class="btn btn-danger">Fire stylist</button>
@@ -24,6 +24,7 @@
             <td><input id="name" name="name" type="text" class="form-control" value="Stylist name"></td>
             <td><input id="specialty" name="specialty" type="text" class="form-control" value="Stylist specialty"></td>
           <td><button type="submit" class="btn btn-success">Add client</button></td>
+        </form>
         </tbody>
       </table>
     </div>
