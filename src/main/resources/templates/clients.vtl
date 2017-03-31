@@ -22,17 +22,17 @@
               <td>$client.getClientAppointmentTime()</td>
               <!-- <td>$stylists.findStylist($client.getAssignedStylistId())</td> -->
               <td> <!--TODO: make this a drop down? -->
-                #foreach ($stylist in $stylists)
-                  #if ($stylist.getStylistId() == $client.getAssignedStylistId())
-                  $stylist.getStylistName()
-                  #else
-                  No stylist assigned!
-                  #end
-                #end
+                $client.getAssignedStylistName()
               </td>
               <td>big ol delete button</td>
             </tr>
             #end
+            <form action="/clients" method="post">
+              <td><input id="name" name="name" type="text" class="form-control" value="client name"></td>
+              <td><input type="date" name="appointmentDate" min="2017-04-01" class="form-control"><br></td>
+              <td><input type="time" name="appointmentTime" min="11:00" max="20:00" step="900" class="form-control"></td>
+              <td><input id="name" name="stylistSelected" type="text" class="form-control" value="Stylist"></td>
+              <td><button type="submit" class="btn btn-success">Add client</button></td>
           </tbody>
         </table>
       </div>

@@ -37,6 +37,11 @@ public class Client {
     return stylistId;
   }
 
+  public String getAssignedStylistName() {
+    Stylist stylist = Stylist.findStylist(this.stylistId);
+    return stylist.getStylistName();
+  }
+
 
 
 
