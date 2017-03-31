@@ -33,6 +33,10 @@ public class Client {
     return id;
   }
 
+  public int getAssignedStylistId() {
+    return stylistId;
+  }
+
 
 
 

@@ -68,6 +68,15 @@ public void find_returnsClientWithSameId_secondClient() {
   assertEquals(Client.findClient(testClient2.getClientId()), testClient2);
 }
 
+  @Test
+  public void client_savesWithStylistIdCorrectly_true() {
+    Stylist testStylist = new Stylist("Purse on", "Mohawks");
+    testStylist.save();
+    Client testClient = new Client("Person", "1999-01-01", "5:00", testStylist.getStylistId());
+    testClient.save();
+    assertTrue(testClient.getAssignedStylistId() == testStylist.getStylistId());
+  }
+
 
 
 
