@@ -8,4 +8,13 @@ public class ClientTest {
     public DatabaseRule database = new DatabaseRule();
 
 
+  @Test
+  public void client_instantiatesCorrectly_true() {
+    Client testClient = new Client("Person", "1999-01-01");
+    assertTrue(testClient instanceof Client);
+  }
+
+
+
+
 }
