@@ -34,7 +34,7 @@ public class Client {
   }
 
   public int getAssignedStylistId() {
-    return stylistId;
+    return this.stylistId;
   }
 
   public String getAssignedStylistName() {
