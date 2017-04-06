@@ -2,12 +2,10 @@
 
 #### _hair-salon, 03-31-2017_
 
-#### By _**slaughtr**_
+#### By _**Dallas Slaughter**_
 
 ## Description
-_Example text for the description of the project_
-
-
+_This is an app for hair salon owners. It allows the owner to create, update, or delete stylists and clients from their business. They can perform many essential tasks for both stylists and clients, such as changing names and appointments, specialties of stylists, firing stylists, or deleting clients._
 
 
 ## Setup/Installation Requirements
@@ -20,6 +18,12 @@ then, 'CREATE TABLE clients (id serial PRIMARY KEY, name varchar, appointment_da
 then, 'CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, specialty varchar)'
 * _Run the command 'gradle run'_
 * _Open browser and go to localhost:4567_
+
+
+## Technologies Used
+
+_Java, Spark, Velocity Template Engine, HTML, CSS, gradle_
+
 
 
 ### License

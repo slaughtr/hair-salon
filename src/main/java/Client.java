@@ -55,8 +55,12 @@ public class Client {
   }
 
   public String getAssignedStylistName() {
-    Stylist stylist = Stylist.findStylist(this.stylistId);
-    return stylist.getStylistName();
+    try {
+      Stylist stylist = Stylist.findStylist(this.stylistId);
+      return stylist.getStylistName();
+    } catch (NullPointerException exception) {
+      return "No stylist assigned!";
+    }
   }
 
   public void deleteClientFromDatabase() {

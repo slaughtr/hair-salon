@@ -9,6 +9,8 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
+    //use below for testing
+
     // Stylist testStylist1 = new Stylist("Judy", "Judgement");
     // testStylist1.save();
     // Client testClient = new Client("Joe Schmo", "2017-04-06", "1:30", testStylist1.getStylistId());
@@ -47,7 +49,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/clients", (request, response) -> {
+    post("/clients/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/clients.vtl");
       model.put("stylists", Stylist.allStylists());
@@ -58,6 +60,7 @@ public class App {
       int selectedStylist = Integer.parseInt(request.queryParams("stylistName"));
       Client newClient = new Client(name, appointmentDate, appointmentTime, selectedStylist);
       newClient.save();
+      response.redirect(request.headers("Referer"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -69,7 +72,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/stylists", (request, response) -> {
+    post("/stylists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/stylists.vtl");
       model.put("stylists", Stylist.allStylists());
@@ -78,6 +81,7 @@ public class App {
       String specialty = request.queryParams("specialty");
       Stylist newStylist = new Stylist(name, specialty);
       newStylist.save();
+      response.redirect(request.headers("Referer"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
